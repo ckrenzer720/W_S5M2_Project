@@ -78,11 +78,11 @@ function moduleProject2() {
   document.addEventListener("keydown", (evt) => {
     // 👉 TASK 3 - Use the arrow keys to highlight a new square 👈
     // 👉 TASK 3 - Use the arrow keys to highlight a new square 👈
-    console.log(evt.key);
     let arrowDown = evt.key === keys.down;
     let arrowUp = evt.key === keys.up;
     let arrowLeft = evt.key === keys.left;
     let arrowRight = evt.key === keys.right;
+    let spaceBar = evt.key === keys.space;
 
     let targeted = document.querySelector('.targeted')
 
@@ -112,12 +112,32 @@ function moduleProject2() {
       // console.log('you clicked right!');
     }
 
-
     // 👉 TASK 4 - Use the space bar to exterminate a mosquito 👈
     // 👉 TASK 4 - Use the space bar to exterminate a mosquito 👈
+    else if (spaceBar) {
+      let mosquito = targeted.firstChild
 
-    // 👉 TASK 5 - End the game 👈
-    // 👉 TASK 5 - End the game 👈
+      if (mosquito && mosquito.dataset.status === 'alive') {
+        mosquito.dataset.status = 'dead';
+        mosquito.parentElement.style.backgroundColor = 'red'
+      }
+      // 👉 TASK 5 - End the game 👈
+      // 👉 TASK 5 - End the game 👈
+      let liveMosquitoes = document.querySelectorAll('[data-status=alive]')
+      if(!liveMosquitoes.length) {
+        let timeElapsed = getTimeElapsed()
+        document.querySelector('p.info').textContent =
+        `Extermination completed in ${timeElapsed / 1000} seconds!`
+
+        let restartBtn = document.createElement('button')
+        restartBtn.textContent = "Restart";
+        restartBtn.addEventListener("click", () => {
+          location.reload() 
+        })
+        document.querySelector('h2').insertAdjacentElement('beforeend', restartBtn)
+      }
+    }
+
   });
   // 👆 WORK WORK ABOVE THIS LINE 👆
 }
