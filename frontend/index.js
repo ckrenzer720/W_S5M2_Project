@@ -1,4 +1,5 @@
 // 👉 TASK 1 - Understand the existing code 👈
+// 👉 TASK 1 - Understand the existing code 👈
 function moduleProject2() {
   // 👇 WORK WORK BELOW THIS LINE 👇
   let startTime = new Date().getTime() // Record start time
@@ -37,6 +38,11 @@ function moduleProject2() {
       row.appendChild(square)
       square.addEventListener('click', () => {
         // 👉 TASK 2 - Use a click handler to target a square 👈
+        // 👉 TASK 2 - Use a click handler to target a square 👈
+        if (!square.classList.contains('targeted')) {
+          document.querySelector('.targeted').classList.remove('targeted');
+          square.classList.add('targeted');
+        }
       })
     }
   }
@@ -65,9 +71,12 @@ function moduleProject2() {
 
   document.addEventListener('keydown', evt => {
     // 👉 TASK 3 - Use the arrow keys to highlight a new square 👈
+    // 👉 TASK 3 - Use the arrow keys to highlight a new square 👈
 
     // 👉 TASK 4 - Use the space bar to exterminate a mosquito 👈
+    // 👉 TASK 4 - Use the space bar to exterminate a mosquito 👈
 
+    // 👉 TASK 5 - End the game 👈
     // 👉 TASK 5 - End the game 👈
   })
   // 👆 WORK WORK ABOVE THIS LINE 👆
